@@ -39,6 +39,8 @@ MYSQL='MySQL ODBC 8.0 Unicode Driver'
 ORACLE='Oracle 19 ODBC driver'
 ```
 
+The SECRET is used to encrypt the username/passwords within the MongoDB and needs to be a 32byte base64 encoded hash
+
 ## Run
 ```bash
 python server.py
