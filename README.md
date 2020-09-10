@@ -48,7 +48,6 @@ python server.py
 To view, add or delete jobs a simple REST API is implemented, many parts are identical to Dynatrace' 3rd Party Synthetic API and can be reused.
 The plugin comes with the swagger ui to look at the structure of requests goto http://yourhost:5000/api/ui/
 
-http://localhost:5000/api/ui/
 
 ### Authorization
 Type: API Key
@@ -60,13 +59,13 @@ Value: DynatraceAPIToken
 GET http://yourhost:5000/api/job
 
 ### GetSingleJob
-GET http://yourhost:5000/api/job/<jobid>
+GET http://yourhost:5000/api/job/'<jobid>'
 
 ### AddJob
 POST http://yourhost:5000/api/job
 
 ### DeleteJob
-DELETE http://yourhost:5000/api/job/<jobid>
+DELETE http://yourhost:5000/api/job/'<jobid>'
 
 ## Limitations
 The plugin currently only supports one Synthetic Location
