@@ -59,13 +59,13 @@ Value: DynatraceAPIToken
 GET http://yourhost:5000/api/job
 
 ### GetSingleJob
-GET http://yourhost:5000/api/job/'<jobid>'
+GET http://yourhost:5000/api/job/'jobid'
 
 ### AddJob
 POST http://yourhost:5000/api/job
 
 ### DeleteJob
-DELETE http://yourhost:5000/api/job/'<jobid>'
+DELETE http://yourhost:5000/api/job/'jobid'
 
 ## Limitations
 The plugin currently only supports one Synthetic Location
