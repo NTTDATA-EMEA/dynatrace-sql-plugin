@@ -8,7 +8,7 @@ Get your free 15-Days Trial here: www.dynatrace.ai/nttdata
 ### MongoDB
 This plugin requires a MongoDB to store the JobData and JobResults
 ### ODBC Drivers
-This plugin uses the pyodbc module which relies on the OS ODBC Driver for the given Databases
+This plugin uses the pyodbc module which relies on the OS ODBC Driver for the given Databases.  
 On Linux (or during the creation of a docker image) run installODBCDrivers.sh to get the drivers installed for MS-SQL, MySQL, Oracle and PostgreSQL
 ## Installation
 
