@@ -1,0 +1,234 @@
+swagger: '2.0'
+info:
+  description: A Simple Dynatrace AddOn to use SQL Queries for synthetic monitoring and custom metrics
+  title: Dynatrace SQL Scheduler
+  version: v1
+host: localhost
+basePath: /api
+schemes:
+- "http"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+ /job:
+    get:
+      tags:
+      - "job"
+      summary: "Finds all Jobs"
+      description: ""
+      operationId: "job.listJob"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Job"
+      security:
+      - api_key: []
+
+    post:
+      tags:
+      - "job"
+      summary: "Add a new job to the store"
+      description: ""
+      operationId: "job.addJob"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Job object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Job"
+      responses:
+        "200":
+          description: "Added successfully"
+        "405":
+          description: "Invalid input"
+      security:
+      - api_key: []
+
+    put:
+      tags:
+      - "job"
+      summary: "Update an existing job"
+      description: ""
+      operationId: "job.updateJob"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Job object that needs to be updated"
+        required: true
+        schema:
+          $ref: "#/definitions/Job"
+      responses:
+        "200":
+          description: "Job updated successfully"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "job not found"
+        "405":
+          description: "Validation exception"
+      security:
+      - api_key: []
+ /job/{job_id}:
+    get:
+      tags:
+        - "job"
+      operationId: "job.getJobById"
+      summary: "Get a single job by Id"
+      parameters:
+        - $ref: '#/parameters/job_id'
+      responses:
+        200:
+          description: Return job
+          schema:
+            $ref: '#/definitions/Job'
+        404:
+          description: Job does not exist
+    delete:
+      tags:
+        - "job"
+      operationId: "job.deleteJob"
+      summary: "Get a single job by Id"
+      parameters:
+        - $ref: '#/parameters/job_id'
+      responses:
+        200:
+          description: Delete Job
+        404:
+          description: Job does not exist
+
+parameters:
+  job_id:
+    name: job_id
+    description: Jobs's Unique identifier
+    in: path
+    type: string
+    required: true
+    pattern: "^[a-zA-Z0-9-]+$"
+definitions:
+  Job:
+    type: "object"
+    required:
+    - "title"
+    - "dbType"
+    - "scheduleIntervalInSeconds"
+    - "dbUsername"
+    - "dbPassword"
+    - "dbServer"
+    - "dbDatabase"
+    properties:
+      category:
+        type: "string"
+        enum:
+        - "Synthetic"
+        - "CustomMetric"
+        - "Both"
+      title:
+        type: "string"
+        example: "Query MS SQL Cluster Asterix"
+      locations:
+        type: "array"
+        items:
+          $ref: "#/definitions/Location"
+      tests:
+        type: "array"
+        items:
+          $ref: "#/definitions/test"
+      tags:
+        type: "array"
+        xml:
+          name: "tag"
+          wrapped: true
+        items:
+          type: "string"
+      status:
+        type: "string"
+        description: "job status in the store"
+        enum:
+          - "Enabled"
+          - "Disabled"
+      dbType:
+        type: "string"
+        enum:
+        - "MSSQL"
+        - "MySQL"
+        - "Oracle"
+        - "PostgreSQL"
+      dbUsername:
+        type: "string"
+      dbPassword:
+        type: "string"
+      dbServer:
+        type: "string"
+      dbDatabase:
+        type: "string"
+      dtSyntheticEngineName:
+        type: "string"
+      dtCustomDeviceName:
+        type: "string"
+      dtCustomMetrics:
+        type: "array"
+        items:
+          $ref: "#/definitions/CustomMetric"
+      scheduleIntervalInSeconds:
+        type: "integer"        
+  step:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      title:
+        type: "string"
+      query:
+        type: "string"
+  Location:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      ip:
+        type: "string"
+      name:
+        type: "string"
+  test:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      title:
+        type: "string"
+      scheduleIntervalInSeconds:
+        type: "integer"
+      locations:
+        type: "array"
+        items:
+          $ref: "#/definitions/locationid"
+      steps:
+        type: "array"
+        items:
+          $ref: "#/definitions/step"
+  locationid:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+  CustomMetric:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+  
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "AuthKey"
+    in: "header"
+    x-apikeyInfoFunc: auth.apikey_auth
+        
