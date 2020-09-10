@@ -1,6 +1,6 @@
 # NTTData dynatrace-sql-plugin EXPERIMENTAL
-This is an EXPERIMENTAL Dynatrace Plugin which uses the Dynatrace 3rd Party Synthetic API to add Synthetic SQL Stats and pythons APScheduler to execute the Queries
-The script can run either on a host or easily containerized.
+This is an EXPERIMENTAL Dynatrace Plugin which uses the Dynatrace 3rd Party Synthetic API to add Synthetic SQL Stats and pythons APScheduler to execute the Queries.  
+The script can run either on a host or easily be containerized.
 
 ## Prerequisits
 ### Dynatrace Tenant
