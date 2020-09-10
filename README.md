@@ -52,9 +52,9 @@ The plugin comes with the swagger ui to look at the structure of requests goto h
 
 
 ### Authorization
-Type: API Key
-Add to: Header
-Key: "AuthKey"
+Type: API Key  
+Add to: Header  
+Key: "AuthKey"  
 Value: DynatraceAPIToken
 
 ### ListJobs
@@ -70,6 +70,6 @@ POST http://yourhost:5000/api/job
 DELETE http://yourhost:5000/api/job/'jobid'
 
 ## Limitations
-The plugin currently only supports one Synthetic Location
-No https implemented
+The plugin currently only supports one Synthetic Location  
+No https implemented  
 No change job implemented (needs to be added and deleted)
