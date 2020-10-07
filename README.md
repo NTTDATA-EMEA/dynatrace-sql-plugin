@@ -55,7 +55,7 @@ docker build -t nttdynsql .
 
 Run the container:
 ```bash
-docker run --env-file .env -p 5000:5000 dynsql
+docker run -dt --env-file .env -p 5000:5000 nttdynsql
 ```
 
 ## Run with docker-compose
