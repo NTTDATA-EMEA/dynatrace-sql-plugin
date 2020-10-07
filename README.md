@@ -46,6 +46,23 @@ The SECRET is used to encrypt the username/passwords within the MongoDB and need
 python server.py
 ```
 
+## Run with Docker
+Build the image first:
+
+```bash
+docker build -t nttdynsql .
+```
+
+Run the container:
+```bash
+docker run --env-file .env -p 5000:5000 dynsql
+```
+
+## Run with docker-compose
+```bash
+docker-compose up -d
+```
+
 ## Usage
 To view, add or delete jobs a simple REST API is implemented, many parts are identical to Dynatrace' 3rd Party Synthetic API and can be reused.
 The plugin comes with the swagger ui to look at the structure of requests goto http://yourhost:5000/api/ui/

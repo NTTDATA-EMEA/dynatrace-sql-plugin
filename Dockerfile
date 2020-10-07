@@ -1,12 +1,18 @@
-FROM python:3
+FROM python:3.7-alpine
 
 WORKDIR /usr/src/app
 
 COPY requirements.txt ./
 
-RUN apt-get update && \
-    apt-get install -y unixodbc-dev && \
-    pip install --no-cache-dir -r requirements.txt
+RUN apk add --no-cache --virtual .build-deps \
+    gcc \
+    musl-dev \
+    libffi-dev \
+    openssl-dev \
+    python3-dev \
+    && apk add --no-cache unixodbc-dev g++ \
+    && pip install --no-cache-dir -r requirements.txt \
+    && apk del .build-deps
 
 COPY src/ .
 
