@@ -1,5 +1,5 @@
 apt update
-apt install -y unixodbc unixodbc-dev python-dev libgssapi-krb5-2 odbc-postgresql curl wget python-pip unzip
+apt install -y unixodbc unixodbc-dev python-dev libgssapi-krb5-2 odbc-postgresql curl wget python-pip libaio1 libffi-dev unzip
 
 #MySQL
 wget https://dev.mysql.com/get/Downloads/Connector-ODBC/8.0/mysql-connector-odbc_8.0.21-1debian10_amd64.deb

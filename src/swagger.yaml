@@ -3,7 +3,6 @@ info:
   description: A Simple Dynatrace AddOn to use SQL Queries for synthetic monitoring and custom metrics
   title: Dynatrace SQL Scheduler
   version: v1
-host: localhost
 basePath: /api
 schemes:
 - "http"
