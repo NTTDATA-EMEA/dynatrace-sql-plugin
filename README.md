@@ -21,7 +21,7 @@ Within the .env File adapt the variables according your needs
 
 ```bash
 #GENERAL PARAMETER
-SECRET=lJ9klQjvoKPqnMQRzaDHT4y4n6XaZ2cEF0nH73FxOoQ=
+SECRET=123454545452
 DTURL=https://yourdtid.live.dynatrace.com
 DTAPITOKEN=yourdtapitoken
 PORT=5000
